@@ -1,0 +1,15 @@
+h2 {
+    text-align: center;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+}
+
+tr>td,
+thead>th {
+    text-align: center;
+    margin: 15px;
+    border: 1px solid black;
+}

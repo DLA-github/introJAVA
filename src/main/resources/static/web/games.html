@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="games.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>List of Games</h2>
+        <ol>
+            <li v-for="game in allGames">
+                <ul>
+                    <li>Game ID: {{game.id}}</li>
+                    <li>Game created at: {{game.created}}</li>
+                    <li v-if="game.gamePlayers.length>0"> GamePlayers
+                        <ul v-for="gp in game.gamePlayers">
+                            <li>GamePlayer ID: {{gp.id}}</li>
+                            <li>GamePlayer Player:{{gp.player}}</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ol>
+        <h2>LeaderBoard</h2>
+        <div class="table">
+            <table>
+                <thead>
+                    <th>Player</th>
+                    <th>Total Games</th>
+                    <th>Points</th>
+                    <th>T.Wins</th>
+                    <th>T.Tide</th>
+                    <th>T.Lose</th>
+                </thead>
+                <tbody>
+                    <tr v-for="player in allPlayers">
+                        <td>{{player.player}}</td>
+                        <td>{{player.totalGames}}</td>
+                        <td>{{player.totalPoints}}</td>
+                        <td>{{player.wins}}</td>
+                        <td>{{player.tides}}</td>
+                        <td>{{player.loses}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue">
+        </script>
+        <script src="./games.js"></script>
+</body>
+
+</html>
