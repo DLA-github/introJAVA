@@ -12,26 +12,55 @@
 
 <body>
     <div id="app">
-        <h2>Game ID {{game.id}}</h2>
+        <div v-if="message.length==0">
+            <div class="title">
+                <h2>Game ID {{gameId}} date: {{dateGame}} for player: {{player}}</h2>
+            </div>
+            <!-- <div>
+                <button @click="test()">test</button>
+            </div> -->
+            <div class="listShips" v-if="!send">
+                <div class="todo-item" v-for="(item, i) in imgs" v-key="i" :id="'div'+i">
+                    <img :src="item" alt="" draggable="true" @dragstart="dragStart(i, $event)" @dragover.prevent
+                        @drop="drop($event)" :id="'z'+ i">
+                    <input type="checkbox" @click="rotate(event)">vertical</input>
+                </div>
+                <div id="shipSender" class="todo-item" v-if="ships.length==5">
+                    <button @click="sendShips($event)"> Ships are Ready </button>
+                </div>
+                <div id="reset" class="todo-item" v-if="ships.length>1">
+                    <button @click="reset($event)">reset positions</button>
+                </div>
+            </div>
 
-        <div id="ships" class="grid">
-            <!-- contenedor -->
-            <div class="cell" v-for="pos in positions" @click="console.log(event.target.textContent)">{{pos}}</div>
+            <div>
+                <div class="grid1" id="ships">
+                    <div @dragover.prevent @drop="drop($event)" v-for="pos in positions" class="cell" :id="pos">{{pos}}
+                    </div>
+                </div>
+
+                <div class="separator">
+                    <h2>Salvo Grid</h2>
+                    <h3>{{currentSalvo.turn}}</h3>
+                </div>
+                <div class="salvoSender"><button @click="sendSalvos($event)">Send Salvo</button></div>
+                <div id="salvo" class="grid2">
+                    <!-- contenedor -->
+                    <div class="cell" v-for="pos in positions" @click="addSalvoLocation($event)" :id="'salvo'+pos">
+                        {{pos}}</div>
+                </div>
+
+            </div>
+        </div>
+        <div v-else>
+            <a href="./games.html">{{message}}</a>
 
         </div>
+    </div>
 
-        <div class="separator">
-            <h2>Salvo Grid</h2>
-        </div>
-
-        <div id="salvo" class="grid">
-            <!-- contenedor -->
-            <div class="cell" v-for="pos in positions" @click="console.log(event.target.textContent)">{{pos}}</div>
-
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue">
-        </script>
-        <script src="./game.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue">
+    </script>
+    <script src="./game.js"></script>
 </body>
 
 </html>

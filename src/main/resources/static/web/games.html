@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/05f3114d49.js"></script>
     <link rel="stylesheet" href="games.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -11,8 +12,28 @@
 
 <body>
     <div id="app">
-        <h2>List of Games</h2>
-        <ol>
+        <div class="navbar">
+            <div class="title">
+                <div>
+                    <h2>List of Games</h2>
+                </div>
+                <div>
+                    <h3 v-if=(player)>Welcome {{player.playerName}}</h3>
+                </div>
+            </div>
+            <div class="icons">
+                <div><a href="../web/login.html" v-if="!(player)"><i class="fas fa-sign-in-alt"></i>Log In</a></div>
+                <div><a href="../web/register.html" v-if="!(player)"><i class="far fa-edit"></i>Sign in</a></div>
+                <div><a @click="logout()" href="../web/games.html" v-if="player"><i class="fas fa-sign-out-alt">Log
+                            Out</i></a>
+                </div>
+                <div v-if="(player)">
+                    <button @click="newGame()">New Game</button>
+                </div>
+            </div>
+
+        </div>
+        <ol v-if="!(player)">
             <li v-for="game in allGames">
                 <ul>
                     <li>Game ID: {{game.id}}</li>
@@ -27,6 +48,41 @@
                 </ul>
             </li>
         </ol>
+        <ol v-if="(player)">
+            <li v-for="game in allGames">
+                <ul>
+                    <li>Game ID: {{game.id}}</li>
+                    <li>Game created at: {{game.created}}</li>
+                    <li v-if="game.gamePlayers.length>0"> GamePlayers
+                        <ul v-for="gp in game.gamePlayers">
+                            <li v-if="gpID.includes(gp.id)"><a :href="'./game.html?gp='+ gp.id">GamePlayer ID:
+                                    {{gp.id}}</a></li>
+                            <li v-else>GamePlayer ID: {{gp.id}}</li>
+                            <li>GamePlayer Player:{{gp.player}}</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ol>
+
+        <div class="join" v-if="player">
+            <div>
+                <h2>Join Games</h2>
+                <button @click="show=!show"> Show All Games </button>
+            </div>
+            <div v-if="show">
+                <ol>
+                    <li v-for="game in totalGames">Game ID: {{game.gameID}}
+                        <button :data-value="game.gameID" @click="join(event)">Join Game</button>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+
+
+
         <h2>LeaderBoard</h2>
         <div class="table">
             <table>
@@ -53,6 +109,7 @@
         <script src="https://cdn.jsdelivr.net/npm/vue">
         </script>
         <script src="./games.js"></script>
+    </div>
 </body>
 
 </html>

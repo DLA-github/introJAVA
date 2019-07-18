@@ -7,9 +7,45 @@ h2 {
     justify-content: center;
 }
 
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar>div.title {
+    width: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+}
+
+.navbar>.icons {
+    width: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+
+
+}
+
+.title>div {
+    align-self: baseline;
+    margin: 15px;
+}
+
+.icons>div {
+    margin: 20px;
+}
+
 tr>td,
 thead>th {
     text-align: center;
     margin: 15px;
     border: 1px solid black;
+}
+
+.join {
+    display: flex;
+    justify-content: center;
 }

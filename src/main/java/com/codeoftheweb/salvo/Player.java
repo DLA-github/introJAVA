@@ -2,6 +2,7 @@ package com.codeoftheweb.salvo;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,17 +18,20 @@ public class Player {
     private long id;
 
     @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-    Set<GamePlayer> gamePlayers;
+    Set<GamePlayer> gamePlayers = new HashSet<>();
 
     @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
-    Set<Score> scores;
+    Set<Score> scores = new HashSet<>();
 
 
     private String userName;
+    private String password;
+
     public Player(){}
 
-    public Player(String userName) {
+    public Player(String userName, String password ) {
         this.userName = userName;
+        this.password = password;
     }
 
     public void addGamePlayer(GamePlayer gamePlayer) {
@@ -48,6 +52,13 @@ public class Player {
         return null;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public List<Game> getGames() {
         return gamePlayers.stream().map(sub -> sub.getGame()).collect(toList());

@@ -3,6 +3,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class Salvo{
 
     @ElementCollection
     @Column(name="salvoLocations")
-    private List<String> salvoLocations = new ArrayList<>();
+    private Set<String> salvoLocations = new HashSet<>();
 
     private long turn;
 
@@ -30,8 +31,10 @@ public class Salvo{
 
     public Salvo(){}
 
-    public Salvo(long turn,List<String> locations) {
-        this.salvoLocations=locations;
+    public Salvo(long turn,Set<String> locations) {
+        locations.forEach(loc->{
+            salvoLocations.add(loc);
+        });
         this.turn= turn;
 
 
@@ -58,13 +61,12 @@ public class Salvo{
     }
 
 
-
-    public List<String> getSalvoLocations() {
+    public Set<String> getSalvoLocations() {
         return salvoLocations;
     }
 
-    public void setLocations(List<String> locations) {
-        this.salvoLocations = locations;
+    public void setSalvoLocations(Set<String> salvoLocations) {
+        this.salvoLocations = salvoLocations;
     }
 
     @Override
