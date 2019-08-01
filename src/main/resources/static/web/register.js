@@ -20,7 +20,13 @@ var login = new Vue({
                 })
                 .then(function (data) {
                     console.log(data);
-                    window.location = "./login.html";
+
+                    alert(data);
+
+                    setTimeout(function () {
+                        window.location = "./login.html";
+                    }, 2000)
+
 
                 })
                 .catch(function (error) {

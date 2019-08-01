@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,6 +20,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +52,7 @@ public class SalvoApplication {
 			 SalvoRepository repoSalvo,
 			 ScoreRepository repoScore) { return (args) -> {
 
-            Date date = new Date();
+/*            Date date = new Date();
             Date newDate1 = Date.from(date.toInstant().plusSeconds(3600));
             Date newDate2 = Date.from(date.toInstant().plusSeconds(7200));
             Date newDate3 = Date.from(date.toInstant().plusSeconds(10800));
@@ -68,7 +72,7 @@ public class SalvoApplication {
             repoGame.save(game3);
             repoGame.save(game4);
             repoGame.save(game5);
-            repoGame.save(game6);
+            repoGame.save(game6);*/
 
 
             Player player1 = new Player("j.bauer@ctu.gov",passwordEncoder().encode("444444"));
@@ -83,7 +87,7 @@ public class SalvoApplication {
 
 
 
-			List<Player> players = repoPlayer.findAll();
+			/*List<Player> players = repoPlayer.findAll();
 			List<Game> games = repoGame.findAll();
 
 			GamePlayer gamePlayer1 = new GamePlayer();
@@ -126,12 +130,12 @@ public class SalvoApplication {
 			//PARA CREAR LISTAS DE STRINGS DE FORMA RÁPIDA Y NO COMO ARRIBA
 			//List<String> names = new ArrayList<>(Arrays.asList("John", "Mary", "Bill"));
 
-			Ship ship1 = new Ship("cruiser",locations1);
-			Ship ship2 = new Ship("cruiser",locations2);
-			Ship ship3 = new Ship("cruiser",locations3);
-			Ship ship4 = new Ship("cruiser",locations1);
-			Ship ship5 = new Ship("cruiser",locations3);
-			Ship ship6 = new Ship("cruiser",locations2);
+			Ship ship1 = new Ship("Cruiser",locations1);
+			Ship ship2 = new Ship("Cruiser",locations2);
+			Ship ship3 = new Ship("Cruiser",locations3);
+			Ship ship4 = new Ship("Cruiser",locations1);
+			Ship ship5 = new Ship("Cruiser",locations3);
+			Ship ship6 = new Ship("Cruiser",locations2);
 
 
 			Set<String> salvo1locations = new HashSet<>();
@@ -229,7 +233,7 @@ public class SalvoApplication {
 
             repoScore.save(score1);
             repoScore.save(score2);
-
+*/
 
 
 		};
@@ -270,7 +274,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				//.antMatchers("/rest/**").hasAuthority("ADMIN")
 				.antMatchers("/api/game_view","/api/game/**/players","/api/games/players/**/ships","/api/games/players/**/salvos").hasAuthority("USER")
-				.antMatchers("/rest/**","/web/**","/api/games","/api/leaderBoard","/api/players").permitAll()
+				.antMatchers("/rest/**","/web/**","/api/games","/api/leaderBoard","/api/players","/request/**").permitAll()
 				.anyRequest().authenticated();
 
 
@@ -300,6 +304,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.headers().frameOptions().disable();
 	}
+
 
 	private void clearAuthenticationAttributes(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);

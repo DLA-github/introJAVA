@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="game.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.2/sockjs.min.js"></script>
+    <!-- https://cdnjs.com/libraries/stomp.js/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -19,10 +22,12 @@
             <!-- <div>
                 <button @click="test()">test</button>
             </div> -->
+
+
             <div class="listShips" v-if="!send">
                 <div class="todo-item" v-for="(item, i) in imgs" v-key="i" :id="'div'+i">
-                    <img :src="item" alt="" draggable="true" @dragstart="dragStart(i, $event)" @dragover.prevent
-                        @drop="drop($event)" :id="'z'+ i">
+                    <img :src="item" alt="" draggable="true" @tap="dragStart(i,$event)"
+                        @dragstart="dragStart(i, $event)" @dragover.prevent @drop="drop($event)" :id="'z'+ i">
                     <input type="checkbox" @click="rotate(event)">vertical</input>
                 </div>
                 <div id="shipSender" class="todo-item" v-if="ships.length==5">
@@ -32,34 +37,109 @@
                     <button @click="reset($event)">reset positions</button>
                 </div>
             </div>
-
-            <div>
-                <div class="grid1" id="ships">
+            <div id="action">
+                <div class="grid1 todo-item" id="ships">
                     <div @dragover.prevent @drop="drop($event)" v-for="pos in positions" class="cell" :id="pos">{{pos}}
                     </div>
                 </div>
 
-                <div class="separator">
-                    <h2>Salvo Grid</h2>
-                    <h3>{{currentSalvo.turn}}</h3>
+                <div class="salvoCont" v-if="enemy">
+
+                    <div class="salvoSender" id="salvoSender"><button @click="sendSalvos($event)">Send
+                            Salvo</button>
+                    </div>
+                    <div class="todo-item">
+                        <div class="table">
+                            <div class="tr1">
+                                <div class="td1">
+                                    <p>{{player}}</p>
+                                </div>
+                            </div>
+                            <div class="tr1">
+                                <div class="td1">
+                                    <div class="tr2">
+                                        <div class="td2">turn</div>
+                                        <div class="td2">Left</div>
+                                        <div class="td2">Type</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tr1">
+                                <div class="td1">
+                                    <div class="tr2">
+                                        <div class="td2">{{oldTurn}}</div>
+                                        <div class="td2">
+                                            <div class="tr3" v-for="ship in ships">
+                                                <div class="td3" v-if="!ship.sunk">{{ship.life}}</div>
+                                                <div class="td3" v-else>Sunken!</div>
+                                            </div>
+                                        </div>
+                                        <div class="td2">
+                                            <div class="tr3" v-for="ship in ships">
+                                                <div class="td3">{{ship.type}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table">
+                            <div class="tr1">
+                                <div class="td1">
+                                    <p>{{enemy}}</p>
+                                </div>
+                            </div>
+                            <div class="tr1">
+                                <div class="td1">
+                                    <div class="tr2">
+                                        <div class="td2">turn</div>
+                                        <div class="td2">Left</div>
+                                        <div class="td2">Type</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tr1" v-for="(salvo,i) in salvoes">
+                                <div class="td1">
+                                    <div class="tr2">
+                                        <div class="td2">{{salvo.turn}}</div>
+                                        <div class="td2">
+                                            <div class="tr3" v-for="succes in salvo.Success">
+                                                <div class="td3" v-if="succes>0">{{succes}}</div>
+                                                <div class="td3" v-else>Sunken!</div>
+                                            </div>
+                                        </div>
+                                        <div class="td2">
+                                            <div class="tr3" v-for="key in keys[i]">
+                                                <div class="td3">{{key}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="salvoSender"><button @click="sendSalvos($event)">Send Salvo</button></div>
-                <div id="salvo" class="grid2">
-                    <!-- contenedor -->
+                <div id="salvo" class="grid2" @load="showSalvos()">
                     <div class="cell" v-for="pos in positions" @click="addSalvoLocation($event)" :id="'salvo'+pos">
                         {{pos}}</div>
                 </div>
+                <div class="todo-item" v-else>
+                    <h2>Waiting for Enemy</h2>
+                </div>
 
             </div>
+
         </div>
+
+
         <div v-else>
             <a href="./games.html">{{message}}</a>
 
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./DragDropTouch.js"></script>
     <script src="./game.js"></script>
 </body>
 

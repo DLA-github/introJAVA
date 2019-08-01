@@ -20,7 +20,10 @@ var login = new Vue({
                 })
                 .then(function (data) {
                     console.log("IN");
-                    window.location = "./games.html";
+                    setTimeout(function () {
+                        window.location = "./games.html";
+                    }, 2000)
+
                 })
                 .catch(function (error) {
                     console.log('Request failure: ', error);
