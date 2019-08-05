@@ -439,7 +439,8 @@ var game = new Vue({
                         alert(data.error);
                     } else if (data.message) {
                         let message = data.message;
-                        if (message.includes("Game")) {
+                        console.log(message);
+                        if (message.includes("Game Over")) {
                             var modal = document.getElementById("myModal");
 
                             // Get the button that opens the modal
