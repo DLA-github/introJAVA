@@ -70,7 +70,8 @@ var game = new Vue({
         enemy: "",
         keys: [],
         enemyTurn: 0,
-        ready: false
+        ready: false,
+        popup: false
     },
 
     created() {
@@ -439,7 +440,8 @@ var game = new Vue({
                     } else if (data.message) {
                         let message = data.message;
                         if (message.includes("Game")) {
-                            alert(message);
+                            //alert(message);
+                            this.popup = true;
                         } else {
                             this.sendSocket();
                             this.sendSalvo = true;

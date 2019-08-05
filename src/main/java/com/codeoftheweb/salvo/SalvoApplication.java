@@ -43,14 +43,14 @@ public class SalvoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SalvoApplication.class, args);
 	}
-	@Bean
-	public CommandLineRunner
-	initData(PlayerRepository repoPlayer,
-			 GameRepository repoGame,
-			 GamePlayerRepository repoGamePlayer,
-			 ShipRepository repoShip,
-			 SalvoRepository repoSalvo,
-			 ScoreRepository repoScore) { return (args) -> {
+//	@Bean
+//	public CommandLineRunner
+//	initData(PlayerRepository repoPlayer,
+//			 GameRepository repoGame,
+//			 GamePlayerRepository repoGamePlayer,
+//			 ShipRepository repoShip,
+//			 SalvoRepository repoSalvo,
+//			 ScoreRepository repoScore) { return (args) -> {
 
 /*            Date date = new Date();
             Date newDate1 = Date.from(date.toInstant().plusSeconds(3600));
@@ -75,15 +75,15 @@ public class SalvoApplication {
             repoGame.save(game6);*/
 
 
-            Player player1 = new Player("j.bauer@ctu.gov",passwordEncoder().encode("444444"));
-            Player player2 = new Player("c.obrian@ctu.gov",passwordEncoder().encode("333333"));
-            Player player3 = new Player("t.almeida@ctu.gov",passwordEncoder().encode("222222"));
-            Player player4 = new Player("d.palmer@whitehouse.gov",passwordEncoder().encode("111111"));
-
-			repoPlayer.save(player1);
-			repoPlayer.save(player2);
-			repoPlayer.save(player3);
-			repoPlayer.save(player4);
+//            Player player1 = new Player("j.bauer@ctu.gov",passwordEncoder().encode("444444"));
+//            Player player2 = new Player("c.obrian@ctu.gov",passwordEncoder().encode("333333"));
+//            Player player3 = new Player("t.almeida@ctu.gov",passwordEncoder().encode("222222"));
+//            Player player4 = new Player("d.palmer@whitehouse.gov",passwordEncoder().encode("111111"));
+//
+//			repoPlayer.save(player1);
+//			repoPlayer.save(player2);
+//			repoPlayer.save(player3);
+//			repoPlayer.save(player4);
 
 
 
@@ -235,9 +235,9 @@ public class SalvoApplication {
             repoScore.save(score2);
 */
 
-
-		};
-	}
+//
+//		};
+//	}
 
 }
 
