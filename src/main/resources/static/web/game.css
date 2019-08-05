@@ -46,6 +46,7 @@ button {
 
 /**************Modal Content***************/
 .modal-content {
+  display: none;
   position: fixed;
   bottom: 0;
   background-color: #fefefe;
