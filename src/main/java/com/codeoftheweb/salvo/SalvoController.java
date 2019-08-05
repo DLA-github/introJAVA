@@ -291,7 +291,7 @@ public class SalvoController {
             return new ResponseEntity<>(sendInfo("error","No game player with the given ID"), HttpStatus.UNAUTHORIZED);
         }
 
-        else if (gamePlayer.getPlayer().getUserName()!=authentication.getName()) {
+        else if (!gamePlayer.getPlayer().getUserName().equals(authentication.getName())) {
             return new ResponseEntity<>(sendInfo("error","current user is not the game player the ID references"),HttpStatus.UNAUTHORIZED);
         }
 
