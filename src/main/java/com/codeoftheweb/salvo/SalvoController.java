@@ -82,7 +82,7 @@ public class SalvoController {
             List<Game> oGames = new ArrayList<>();
 
             List<GamePlayer>othergps = gamesPlayers
-                    .stream().filter(gp->gp.getPlayer().getUserName()!= authentication.getName()).collect(Collectors.toList());
+                    .stream().filter(gp->!gp.getPlayer().getUserName().equals(authentication.getName())).collect(Collectors.toList());
 
             for(GamePlayer gp: othergps){
                 Map<String,Object> oGameInfo = new HashMap<>();
@@ -99,7 +99,7 @@ public class SalvoController {
             List<GamePlayer> myGamesPlayers = new ArrayList<>();
 
             gamesPlayers.stream().forEach(gamePlayer -> {
-                if (gamePlayer.getPlayer().getUserName() == authentication.getName()) {
+                if (gamePlayer.getPlayer().getUserName().equals(authentication.getName())) {
                     myGamesPlayers.add(gamePlayer);
                 }
             });
