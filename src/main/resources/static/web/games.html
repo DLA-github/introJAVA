@@ -78,7 +78,8 @@
                                 <div class="myRow" v-for="gp in games.gamePlayers">
                                     <div class="item">GamePlayer: {{gp.id}}</div>
                                     <div class="item">Player:{{gp.player.user}}</div>
-                                    <div class="item">
+                                    <div class="item" v-if="gp.player.score">Score:{{gp.player.score}}</div>
+                                    <div class="item" v-else>
                                         <button @click="rejoin(gp.id)"
                                             v-if="player.playerName==gp.player.user">ReJoin</button>
                                     </div>

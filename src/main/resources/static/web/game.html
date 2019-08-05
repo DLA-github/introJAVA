@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="game.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.2/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link rel="stylesheet" href="game.css">
     <title>Document</title>
 </head>
 
 <body>
     <div id="app">
-        <div v-if="message.length==0">
+        <div class="modal fade" id="myModal" role="dialog" v-if="popup">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" @click="redirect()">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{result}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" type="button" class="btn btn-default" data-dismiss="modal"
+                            @click="redirect()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="all" v-if="message.length==0">
             <div class="title todo-item">
                 <h2>Game ID {{gameId}} date: {{dateGame}} for player: {{player}}</h2>
                 <div class="todo-item waiting" v-if="!(enemy)">
@@ -34,10 +52,10 @@
                     <input type="checkbox" @click="rotate(event)">vertical</input>
                 </div>
                 <div id="shipSender" class="todo-item" v-if="ships.length==5">
-                    <button @click="sendShips($event)"> Ships are Ready </button>
+                    <button class="btn" @click="sendShips($event)"> Ships are Ready </button>
                 </div>
                 <div id="reset" class="todo-item" v-if="ships.length>1">
-                    <button @click="reset($event)">reset positions</button>
+                    <button class="btn" @click="reset($event)">reset positions</button>
                 </div>
             </div>
             <div id="action">
@@ -48,7 +66,8 @@
                 </div>
 
                 <div class="salvoCont" v-if="enemy">
-                    <div class="salvoSender" id="salvoSender"><button @click="sendSalvos($event)" v-if="send">Send
+                    <div class="salvoSender" id="salvoSender"><button class="btn" @click="sendSalvos($event)"
+                            v-if="send">Send
                             Salvo</button>
                         <!-- <button @click="sendSalvos($event)" disabled v-else>Send
                             Salvo</button> -->
@@ -131,28 +150,9 @@
             </div>
 
         </div>
-        <div v-else>
+        <div class="all" v-else>
             <a href="./games.html">{{message}}</a>
 
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

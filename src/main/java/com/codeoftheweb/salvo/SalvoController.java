@@ -418,16 +418,25 @@ public class SalvoController {
             if(enemySunken==5&&sunken<5) {
                 Date date = new Date();
                 Score score = new Score(gamePlayer.getPlayer(),gamePlayer.getGame(),1.0);
+                game.addScore(score);
+                repoScore.save(score);
+                repoGame.save(game);
                 return new ResponseEntity<>(sendInfo("message", "Game Over--You win!"), HttpStatus.UNAUTHORIZED);
             }
             else if (sunken==5&&enemySunken<5){
                 Date date = new Date();
                 Score score = new Score(gamePlayer.getPlayer(),gamePlayer.getGame(),0.0);
+                game.addScore(score);
+                repoScore.save(score);
+                repoGame.save(game);
                 return new ResponseEntity<>(sendInfo("message", "Game Over--You lose!"), HttpStatus.UNAUTHORIZED);
             }
             else if (sunken==5 && enemySunken==5) {
                 Date date = new Date();
                 Score score = new Score(gamePlayer.getPlayer(), gamePlayer.getGame(), 0.5);
+                game.addScore(score);
+                repoScore.save(score);
+                repoGame.save(game);
                 return new ResponseEntity<>(sendInfo("message", "Game Over--Tide!!"), HttpStatus.UNAUTHORIZED);
             }
 

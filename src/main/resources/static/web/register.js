@@ -19,14 +19,9 @@ var register = new Vue({
                     body: this.getBody(ourData)
                 })
                 .then(function (data) {
-                    console.log(data);
-
-                    alert(data);
-
                     setTimeout(function () {
                         register.login();
                     }, 2000)
-
 
                 })
                 .catch(function (error) {

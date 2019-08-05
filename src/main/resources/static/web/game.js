@@ -71,6 +71,8 @@ var game = new Vue({
         keys: [],
         enemyTurn: 0,
         ready: false,
+        popup: false,
+        result: ""
 
     },
 
@@ -130,7 +132,6 @@ var game = new Vue({
             stompClient.subscribe('/connection/info', this.onChange);
             stompClient.subscribe('/connection/ready', this.onReady);
             this.sendSocket();
-
         },
         onError(error) {
             alert('Could not connect to WebSocket server. Please refresh this page to try again!')
@@ -291,7 +292,8 @@ var game = new Vue({
                     }
                 }
             } else {
-                console.log("no pinto");
+                //console.log("no pinto");
+                this.sendSalvos();
             }
 
         },
@@ -434,42 +436,21 @@ var game = new Vue({
                 .then(function (r) {
                     return r.json();
                 }).then(data => {
-
                     if (data.error) {
                         alert(data.error);
                     } else if (data.message) {
                         let message = data.message;
-                        console.log(message);
                         if (message.includes("Game Over")) {
-                            var modal = document.getElementById("myModal");
+                            this.popup = true;
+                            this.result = message;
 
-                            // Get the button that opens the modal
-                            var btn = document.getElementById("myBtn");
-
-                            // Get the <span> element that closes the modal
-                            var span = document.getElementsByClassName("close")[0];
-
-
-                            //shows pop Up
-                            modal.style.display = "block";
-
-                            // When the user clicks on <span> (x), close the modal
-                            span.onclick = function () {
-                                modal.style.display = "none";
-                            }
-
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function (event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
                         } else {
                             this.sendSocket();
                             this.sendSalvo = true;
                             document.getElementById("salvoSender").style.display = "none";
                         }
                     }
+
                 })
                 .catch(function (error) {
                     console.log('Request failure: ', error);
@@ -538,6 +519,13 @@ var game = new Vue({
         },
         reset(e) {
             location.reload();
+        },
+        redirect() {
+            this.popup = false;
+            setTimeout(function () {
+                console.log();
+                window.location = "./games.html";
+            }, 1500);
         }
 
     },

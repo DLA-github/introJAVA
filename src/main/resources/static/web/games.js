@@ -25,7 +25,7 @@ var games = new Vue({
         getDataGames() {
             fetch(this.urlgames).then((response) => {
                 response.json().then((data) => {
-                    console.log(data);
+
                     if (data.length > 1) {
                         this.totalGames = data[1].othergames.filter(game => game.Players < 2);
                         this.allGames = data[1].games;
@@ -40,7 +40,7 @@ var games = new Vue({
                     } else {
                         this.allGames = data[0].games;
                     }
-                    console.log(this.allGames);
+
                 });
             });
 
@@ -48,11 +48,12 @@ var games = new Vue({
         getDataPlayers() {
             fetch(this.urlplayers).then((response) => {
                 response.json().then((data) => {
-                    console.log(data);
+
                     let players = data;
                     this.allPlayers = players.sort((a, b) => {
-                        a.totalGames - b.totalGames;
-                    })
+                        a.totalPoints - b.totalPoints;
+                    }).reverse();
+
 
                 });
             });
@@ -103,7 +104,7 @@ var games = new Vue({
                 .then(function (data) {
                     return data.json()
                 }).then((data) => {
-                    console.log(data);
+
                     if (data.gpid) {
                         window.location = "./game.html?gp=" + data.gpid;
                     }
