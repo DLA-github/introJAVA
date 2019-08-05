@@ -1,4 +1,13 @@
-h2 {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+h2,
+h4,
+p {
     text-align: center;
 }
 
@@ -25,8 +34,6 @@ h2 {
     display: flex;
     align-self: center;
     justify-content: flex-end;
-
-
 }
 
 .title>div {
@@ -48,4 +55,46 @@ thead>th {
 .join {
     display: flex;
     justify-content: center;
+}
+
+.todo-item {
+    align-self: baseline;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-bottom: 3px;
+    background-color: white;
+    box-shadow: 1px 2px 2px black;
+    font-size: 14px;
+}
+
+.game {
+    width: 320px;
+    align-self: baseline;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    background-color: white;
+    box-shadow: 1px 2px 2px black;
+    font-size: 14px;
+}
+
+.listGames {
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.titleGame {
+    background-color: darkgrey;
+    border-bottom: 1px solid black
+}
+
+.myRow {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+
 }

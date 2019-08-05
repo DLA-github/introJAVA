@@ -16,9 +16,13 @@
 <body>
     <div id="app">
         <div v-if="message.length==0">
-            <div class="title">
+            <div class="title todo-item">
                 <h2>Game ID {{gameId}} date: {{dateGame}} for player: {{player}}</h2>
+                <div class="todo-item waiting" v-if="!(enemy)">
+                    <h2>Waiting for Enemy</h2>
+                </div>
             </div>
+
             <!-- <div>
                 <button @click="test()">test</button>
             </div> -->
@@ -38,17 +42,19 @@
                 </div>
             </div>
             <div id="action">
+
                 <div class="grid1 todo-item" id="ships">
                     <div @dragover.prevent @drop="drop($event)" v-for="pos in positions" class="cell" :id="pos">{{pos}}
                     </div>
                 </div>
 
                 <div class="salvoCont" v-if="enemy">
-
-                    <div class="salvoSender" id="salvoSender"><button @click="sendSalvos($event)">Send
+                    <div class="salvoSender" id="salvoSender"><button @click="sendSalvos($event)" v-if="send">Send
+                            Salvo</button>
+                        <button @click="sendSalvos($event)" disabled v-else>Send
                             Salvo</button>
                     </div>
-                    <div class="todo-item">
+                    <div class="todo-item" v-if="send">
                         <div class="table">
                             <div class="tr1">
                                 <div class="td1">
@@ -119,14 +125,10 @@
                         </div>
                     </div>
                 </div>
-                <div id="salvo" class="grid2" @load="showSalvos()">
+                <div id="salvo" class="grid2" @load="showSalvos()" v-if="send">
                     <div class="cell" v-for="pos in positions" @click="addSalvoLocation($event)" :id="'salvo'+pos">
                         {{pos}}</div>
                 </div>
-                <div class="todo-item" v-else>
-                    <h2>Waiting for Enemy</h2>
-                </div>
-
             </div>
 
         </div>

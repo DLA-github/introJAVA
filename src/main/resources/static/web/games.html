@@ -12,104 +12,139 @@
 
 <body>
     <div id="app">
-        <div class="navbar">
+        <div class="navbar todo-item" v-if="!(player)">
             <div class="title">
-                <div>
-                    <h2>List of Games</h2>
-                </div>
-                <div>
-                    <h3 v-if=(player)>Welcome {{player.playerName}}</h3>
-                </div>
+
+                <h2>SalvoGame</h2>
+
             </div>
             <div class="icons">
                 <div><a href="../web/login.html" v-if="!(player)"><i class="fas fa-sign-in-alt"></i>Log In</a></div>
                 <div><a href="../web/register.html" v-if="!(player)"><i class="far fa-edit"></i>Sign in</a></div>
-                <div><a @click="logout()" href="../web/games.html" v-if="player"><i class="fas fa-sign-out-alt">Log
+            </div>
+        </div>
+        <div class="navbar todo-item" v-if="player">
+            <div class="title">
+                <h2>SalvoGame</h2>
+            </div>
+            <div class="icons">
+                <div><a @click="logout()" href="../web/games.html"><i class="fas fa-sign-out-alt">Log
                             Out</i></a>
                 </div>
-                <div v-if="(player)">
+                <div>
                     <button @click="newGame()">New Game</button>
                 </div>
             </div>
-
         </div>
-        <ol v-if="!(player)">
-            <li v-for="game in allGames">
-                <ul>
-                    <li>Game ID: {{game.id}}</li>
-                    <li>Game created at: {{game.created}}</li>
-                    <li v-if="game.gamePlayers.length>0"> GamePlayers
-                        <ul v-for="gp in game.gamePlayers">
-                            <li>GamePlayer ID: {{gp.id}}</li>
-                            <li>GamePlayer Player:{{gp.player}}</li>
-                        </ul>
-                    </li>
+        <div class="todo-item" v-if="player">
+            <h3>Welcome {{player.playerName}}</h3>
+        </div>
+        <div>
+            <h2>List of Games</h2>
+        </div>
+        <div v-if="!(player)">
+            <div class="listGames" v-if="allGames.length>0">
+                <div class="game" v-for="game in allGames">
+                    <div class="titleGame">
+                        <h4>Game {{game.id}}</h4>
+                        <p>-created at {{game.created}}-</p>
+                    </div>
+                    <div class="gameData" v-if="game.gamePlayers.length>0">
+                        <div class="myRow" v-for="gp in game.gamePlayers">
+                            <div class="item">GamePlayer: {{gp.id}}</div>
+                            <div class="item">Player:{{gp.player.user}}</div>
+                        </div>
+                    </div>
 
-                </ul>
-            </li>
-        </ol>
-        <ol v-if="(player)">
-            <li v-for="game in allGames">
-                <ul>
-                    <li>Game ID: {{game.id}}</li>
-                    <li>Game created at: {{game.created}}</li>
-                    <li v-if="game.gamePlayers.length>0"> GamePlayers
-                        <ul v-for="gp in game.gamePlayers">
-                            <li v-if="gpID.includes(gp.id)"><a :href="'./game.html?gp='+ gp.id">GamePlayer ID:
-                                    {{gp.id}}</a></li>
-                            <li v-else>GamePlayer ID: {{gp.id}}</li>
-                            <li>GamePlayer Player:{{gp.player}}</li>
-                        </ul>
-                    </li>
+                </div>
+            </div>
+        </div>
+        <div v-if="player">
+            <div class="listGames">
+                <div>
+                    <div>
+                        <h3>My Games</h3>
+                    </div>
+                    <!-- <div class="loader" v-if="allGames.length==0">
+                    </div> -->
+                    <div class="game" v-if="allGames.length>0">
+                        <div v-for="games in allGames">
+                            <div class="titleGame">
 
-                </ul>
-            </li>
-        </ol>
+                                <h4>Game {{games.id}}</h4>
+                                <p>-created at {{games.created}}-</p>
+                            </div>
+                            <div class="gameData" v-if="games.gamePlayers.length>0">
+                                <div class="myRow" v-for="gp in games.gamePlayers">
+                                    <div class="item">GamePlayer: {{gp.id}}</div>
+                                    <div class="item">Player:{{gp.player.user}}</div>
+                                    <div class="item">
+                                        <button @click="rejoin(gp.id)"
+                                            v-if="player.playerName==gp.player.user">ReJoin</button>
+                                    </div>
+                                </div>
+                            </div>
 
-        <div class="join" v-if="player">
+                        </div>
+                    </div>
+                </div>
+                <div v-if="totalGames.length>0">
+                    <div>
+                        <div>
+                            <h3>Join Games</h3>
+                        </div>
+                        <div class="game" v-for="ga in totalGames">
+                            <div v-if="ga.Players==1">
+                                <div class="titleGame">
+                                    <h4>Game {{ga.gameID}}</h4>
+                                </div>
+                                <div class="gameData">
+                                    <div class="myRow">
+                                        <div class="item">Enemy: {{ga.Enemy}}</div>
+                                        <div class="item">
+                                            <button @click="join(ga.gameID)" v-if="ga.Players==1">Join</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="todo-item">
             <div>
-                <h2>Join Games</h2>
-                <button @click="show=!show"> Show All Games </button>
+                <h2>LeaderBoard</h2>
             </div>
-            <div v-if="show">
-                <ol>
-                    <li v-for="game in totalGames">Game ID: {{game.gameID}}
-                        <button :data-value="game.gameID" @click="join(event)">Join Game</button>
-                    </li>
-                </ol>
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>Player</th>
+                        <th>Total Games</th>
+                        <th>Points</th>
+                        <th>T.Wins</th>
+                        <th>T.Tide</th>
+                        <th>T.Lose</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="player in allPlayers">
+                            <td>{{player.player}}</td>
+                            <td>{{player.totalGames}}</td>
+                            <td>{{player.totalPoints}}</td>
+                            <td>{{player.wins}}</td>
+                            <td>{{player.tides}}</td>
+                            <td>{{player.loses}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-
-
-
-        <h2>LeaderBoard</h2>
-        <div class="table">
-            <table>
-                <thead>
-                    <th>Player</th>
-                    <th>Total Games</th>
-                    <th>Points</th>
-                    <th>T.Wins</th>
-                    <th>T.Tide</th>
-                    <th>T.Lose</th>
-                </thead>
-                <tbody>
-                    <tr v-for="player in allPlayers">
-                        <td>{{player.player}}</td>
-                        <td>{{player.totalGames}}</td>
-                        <td>{{player.totalPoints}}</td>
-                        <td>{{player.wins}}</td>
-                        <td>{{player.tides}}</td>
-                        <td>{{player.loses}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue">
-        </script>
-        <script src="./games.js"></script>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">
+    </script>
+    <script src="./games.js"></script>
+
 </body>
 
 </html>

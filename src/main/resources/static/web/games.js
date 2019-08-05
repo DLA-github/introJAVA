@@ -10,7 +10,9 @@ var games = new Vue({
         allPlayers: [],
         player: null,
         show: false,
-        totalGames: []
+        totalGames: [],
+        myGames: [],
+        otherGames: []
 
     },
 
@@ -25,7 +27,7 @@ var games = new Vue({
                 response.json().then((data) => {
                     console.log(data);
                     if (data.length > 1) {
-                        this.totalGames = data[1].othergames;
+                        this.totalGames = data[1].othergames.filter(game => game.Players < 2);
                         this.allGames = data[1].games;
                         this.player = data[0];
                         this.allGames.forEach(game => {
@@ -33,7 +35,7 @@ var games = new Vue({
                                 if (gp.player.user == this.player.playerName) {
                                     this.gpID.push(gp.id);
                                 }
-                            })
+                            });
                         })
                     } else {
                         this.allGames = data[0].games;
@@ -90,9 +92,8 @@ var games = new Vue({
                 });
         },
         join(e) {
-            console.log(e);
-            let id = e.target.attributes[0].value;
-            fetch("/api/game/" + id + "/players", {
+
+            fetch("/api/game/" + e + "/players", {
                     credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
@@ -111,6 +112,9 @@ var games = new Vue({
                     console.log('Request failure: ', error);
                 });
         },
+        rejoin(payload) {
+            window.location = "./game.html?gp=" + payload;
+        }
 
     }
 });

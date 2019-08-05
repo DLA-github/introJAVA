@@ -87,6 +87,8 @@ public class SalvoController {
             for(GamePlayer gp: othergps){
                 Map<String,Object> oGameInfo = new HashMap<>();
                 oGameInfo.put("gameID",gp.getGame().getId());
+                oGameInfo.put("Players",gp.getGame().getGamePlayers().size());
+                oGameInfo.put("Enemy",gp.getPlayer().getUserName());
                 othergames.add(oGameInfo);
             }
 

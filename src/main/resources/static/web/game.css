@@ -9,6 +9,12 @@ body {
   background-position-y: 0;
 }
 
+button {
+  width: 60px;
+  background-color: red;
+  box-shadow: 1px 2px 2px #ccc;
+}
+
 #action {
   display: flex;
   justify-content: center;
@@ -16,23 +22,33 @@ body {
 
 h2 {
   text-align: center;
+  align-self: center;
 }
 
 #app>div {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .title {
+  display: flex;
   width: 100%;
-  text-align: center;
-  margin: 20px;
+  height: 25px;
+  justify-content: center;
+  margin-bottom: 20px !important;
+}
+
+.waiting {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 500px;
+
 }
 
 .todo-item {
   align-self: baseline;
-
   border-radius: 2px;
   padding: 14px 8px;
   margin-bottom: 3px;
@@ -306,6 +322,15 @@ thead>th {
 .td3 {
   width: 100%;
 }
+
+.waiting {
+  display: flex;
+  align-self: center;
+  text-align: center;
+  width: 500px;
+
+}
+
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
   .grid1 {
