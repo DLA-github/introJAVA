@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="register.css">
     <title>Document</title>
 </head>
 
 <body>
     <div id="app">
-        <form id="login-form" onsubmit="return false">
-            <label>Name: <input type="text" v-model="userName" name="username"></label>
-            <label>Password: <input type="text" v-model="password" name="password"></label>
-            <button @click="register()">sign in</button>
 
-        </form>
+        <div class="data">
+            <div class="log">
+                <h3>Please register yourself</h3>
+            </div>
+            <form id="login-form" onsubmit="return false">
+                <div>
+                    <label>Name: <input type="text" v-model="userName" name="username"></label>
+                </div>
+                <div>
+                    <label>Password: <input type="text" v-model="password" name="password"></label>
+                </div>
+                <div class="subm"><button @click="register()">submit</button></div>
+
+            </form>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="register.js">

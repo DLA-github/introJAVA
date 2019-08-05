@@ -3,7 +3,10 @@
     padding: 0;
 }
 
-
+#app {
+    width: 700px;
+    padding: 1% 25%;
+}
 
 h2,
 h4,
@@ -80,7 +83,7 @@ thead>th {
 
 .listGames {
     display: flex;
-
+    width: 700px;
     flex-wrap: wrap;
     justify-content: space-around;
 }

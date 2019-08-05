@@ -1,4 +1,4 @@
-var login = new Vue({
+var register = new Vue({
     el: "#app",
     data: {
         userName: "",
@@ -24,7 +24,7 @@ var login = new Vue({
                     alert(data);
 
                     setTimeout(function () {
-                        window.location = "./login.html";
+                        register.login();
                     }, 2000)
 
 
@@ -42,9 +42,30 @@ var login = new Vue({
             }
             return body.join("&");
         },
+        login() {
+            var ourData = {
+                name: this.userName,
+                pwd: this.password
+            }
+            fetch("/api/login", {
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    body: this.getBody(ourData)
+                })
+                .then(function (data) {
+                    console.log("IN");
+                    setTimeout(function () {
+                        window.location = "./games.html";
+                    }, 2000)
 
-
-
+                })
+                .catch(function (error) {
+                    console.log('Request failure: ', error);
+                });
+        },
     }
 
 
