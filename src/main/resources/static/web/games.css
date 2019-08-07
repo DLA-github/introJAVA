@@ -21,7 +21,6 @@ p {
 }
 
 .table {
-    width: 50%;
     display: flex;
     justify-content: center;
     max-height: 50%;
