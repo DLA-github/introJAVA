@@ -547,37 +547,34 @@ public class SalvoController {
             p.put("player",player.getUserName());
             p.put("totalGames",player.getGames().size());
 
-            games.forEach(game->{
-                int twins = 0;
-                int tlose = 0;
-                double ttide = 0.0;
-                double total = 0.0;
+            int twins = 0;
+            int tlose = 0;
+            double ttide = 0.0;
+            double total = 0.0;
 
-                if (player.getScore(game)!=null) {
+            for(Game game: games) {
 
+                if (player.getScore(game) != null) {
 
                     if (player.getScore(game) == 1.0) {
-                        twins = twins + 1;
+                        twins++;
                         //p.put("he ganado 1",twins);
-                    }
-                    else if(player.getScore(game)==0.0){
-                        tlose = tlose +1;
+                    } else if (player.getScore(game) == 0.0) {
+                        tlose++;
+
+                    } else if (player.getScore(game) == 0.5) {
+                        ttide = ttide + 1;
 
                     }
-                    else if(player.getScore(game)==0.5) {
-                        ttide= ttide +1;
-
-                    }
-                    p.put("tides",ttide);
-                    p.put("loses",tlose);
+                    p.put("tides", ttide);
+                    p.put("loses", tlose);
                     p.put("wins", twins);
-                    total = twins+(ttide/2);
-                    p.put("totalPoints",total);
+                    total = twins + (ttide / 2);
+                    p.put("totalPoints", total);
 
                 }
 
-            });
-
+            }
             result.add(p);
         });
 

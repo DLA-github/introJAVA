@@ -9,14 +9,111 @@ body {
   background-position-y: 0;
 }
 
-.btn {
+#shipSender .btn {
+  padding: 15px 32px;
+  width: 150px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: inset 0px 0px 10px 5px;
+  align-self: center;
+  background-color: #55d12f;
+  border-color: rgb(60, 64, 75);
+
+}
+
+#reset .btn {
+  padding: 15px 32px;
+  width: 150px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: inset 0px 0px 10px 5px;
+  align-self: center;
+  background-color: #d12f2f;
+  border-color: rgb(60, 64, 75);
+
+}
+
+.salvoSender .btn {
   padding: 15px 32px;
   text-align: center;
   display: inline-block;
   font-size: 16px;
+  box-shadow: inset 0px 0px 10px 5px;
+  align-self: center;
+  background-color: #d12f2f;
+  border-color: rgb(104, 51, 47);
+
+}
+
+.modal-footer .btn {
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
   box-shadow: 1px 3px 4px;
   align-self: center;
+  background-color: rgb(204, 96, 24);
 }
+
+.navbar .btn {
+  padding: 3px 8px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  box-shadow: 1px 3px 4px white;
+  align-self: center;
+
+}
+
+.icons>div {
+  align-self: center;
+  margin: 20px;
+}
+
+.navbar.todo-item {
+  width: 100%;
+  height: 45px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+
+}
+
+.title h2 {
+  color: rgb(204, 96, 24);
+  font-size: 14px;
+}
+
+.navbar .titlebar {
+  width: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+}
+
+.navbar>.icons {
+  width: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  margin-right: 20px;
+
+}
+
+.navbar>.icons>div>a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* .title>div {
+  align-self: baseline;
+  margin: 15px;
+} */
 
 #app {
   position: relative;
@@ -49,7 +146,10 @@ body {
 /**************Modal Content***************/
 .modal-content {
   position: fixed;
-  bottom: 0;
+  bottom: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
   background-color: #fefefe;
   width: 50%;
   -webkit-animation-name: slideIn;
@@ -62,7 +162,7 @@ body {
 .close {
   color: white;
   float: right;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -75,7 +175,8 @@ body {
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: rgb(55, 60, 70);
+  border: 1px solid rgb(204, 96, 24);
   color: white;
 }
 
@@ -85,7 +186,8 @@ body {
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: rgb(55, 60, 70);
+  border: 1px solid rgb(204, 96, 24);
   color: white;
 }
 
@@ -145,6 +247,11 @@ h2 {
   align-self: center;
 }
 
+.titlebar h2 {
+  font-size: 22px;
+  color: rgb(204, 96, 24)
+}
+
 .all {
   display: flex;
   flex-wrap: wrap;
@@ -153,17 +260,20 @@ h2 {
 
 .title {
   display: flex;
+  padding: 0;
   width: 100%;
   height: 25px;
   justify-content: center;
   margin-bottom: 20px !important;
 }
 
-.waiting {
+.todo-item.waiting {
+  align-self: center;
+  margin-right: 25px;
   display: flex;
   align-self: center;
   justify-content: center;
-  width: 500px;
+
 
 }
 
@@ -172,13 +282,15 @@ h2 {
   border-radius: 2px;
   padding: 14px 8px;
   margin-bottom: 3px;
-  background-color: #ccc;
-  box-shadow: 1px 2px 2px #ccc;
+  background-color: #575455;
+  box-shadow: 1px 2px 2px #575455;
   font-size: 10px;
+  border: 2px solid rgb(204, 96, 24);
 }
 
 .todo-item>img {
   align-self: baseline;
+  margin-right: 10px;
 }
 
 
@@ -327,7 +439,7 @@ h2 {
 }
 
 #ships {
-  border: 1px solid rgb(52, 56, 65);
+  border: 1px solid rgb(204, 96, 24);
   border-radius: 2px;
   padding: 14px 8px;
   margin-bottom: 3px;
@@ -345,7 +457,7 @@ h2 {
 }
 
 #salvo {
-  border: 1px solid rgb(52, 56, 65);
+  border: 1px solid rgb(204, 96, 24);
   border-radius: 2px;
   padding: 14px 8px;
   margin-bottom: 3px;
@@ -443,13 +555,6 @@ thead>th {
   width: 100%;
 }
 
-.waiting {
-  display: flex;
-  align-self: center;
-  text-align: center;
-  width: 500px;
-
-}
 
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {

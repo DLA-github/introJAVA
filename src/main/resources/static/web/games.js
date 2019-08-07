@@ -40,7 +40,7 @@ var games = new Vue({
                     } else {
                         this.allGames = data[0].games;
                     }
-
+                    console.log(this.allGames);
                 });
             });
 
@@ -52,7 +52,7 @@ var games = new Vue({
                     let players = data;
                     this.allPlayers = players.sort((a, b) => {
                         a.totalPoints - b.totalPoints;
-                    }).reverse();
+                    });
 
 
                 });

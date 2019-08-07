@@ -10,7 +10,16 @@
 
 <body>
     <div id="app">
-
+        <div class="navbar todo-item">
+            <div class="title">
+                <h2>SalvoGame</h2>
+            </div>
+            <div class="icons">
+                <div>
+                    <button class="btn" @click="back()">Back</button>
+                </div>
+            </div>
+        </div>
         <div class="data">
             <div class="log">
                 <h3>Please Log In</h3>
@@ -20,11 +29,10 @@
                     <label>Name: <input type="text" v-model="userName" name="username"></label>
                 </div>
                 <div>
-                    <label>Password: <input type="text" v-model="password" name="password"></label>
+                    <label>Password: <input type="password" v-model="password" name="password"></label>
                 </div>
-                <div class="subm"><button @click="login()">submit</button></div>
-
             </form>
+            <div class="subm"><button @click="login()">submit</button></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

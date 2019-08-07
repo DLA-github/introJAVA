@@ -61,6 +61,9 @@ var register = new Vue({
                     console.log('Request failure: ', error);
                 });
         },
+        back() {
+            window.location = "./games.html";
+        }
     }
 
 

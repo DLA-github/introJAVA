@@ -3,10 +3,12 @@
     padding: 0;
 }
 
-#app {
-    width: 700px;
-    padding: 1% 25%;
+body {
+    background-image: url(./img/46803hd.jpg);
+    background-position-x: 0;
+    background-position-y: 0;
 }
+
 
 h2,
 h4,
@@ -14,22 +16,65 @@ p {
     text-align: center;
 }
 
+.title h2 {
+    color: rgb(204, 96, 24);
+}
+
 .table {
     display: flex;
     justify-content: center;
+
 }
 
-.navbar {
+.navbar.todo-item {
     width: 100%;
+    height: 45px;
     display: flex;
     justify-content: center;
+    background-color: black;
+    color: white;
+    border: 1px solid rgb(204, 96, 24);
+    margin-bottom: 20px;
 }
 
-.navbar>div.title {
+.navbar2.todo-item {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(55, 60, 70);
+    border: 1px solid rgb(204, 96, 24);
+    color: white;
+}
+
+.navbar .title {
     width: 50%;
     display: flex;
     align-self: center;
     justify-content: flex-end;
+
+}
+
+.games h3 {
+    color: white;
+    text-align: center;
+}
+
+.welcome.todo-item {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 40px;
+    background-color: rgb(66, 99, 112);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.welcome.todo-item>* {
+    align-self: center;
 }
 
 .navbar>.icons {
@@ -37,6 +82,12 @@ p {
     display: flex;
     align-self: center;
     justify-content: flex-end;
+
+}
+
+.navbar>.icons>div>a {
+    color: white;
+    text-decoration: none;
 }
 
 .title>div {
@@ -45,6 +96,7 @@ p {
 }
 
 .icons>div {
+    align-self: center;
     margin: 20px;
 }
 
@@ -53,6 +105,11 @@ thead>th {
     text-align: center;
     margin: 15px;
     border: 1px solid black;
+    color: white;
+}
+
+.table th {
+    color: white;
 }
 
 .join {
@@ -71,7 +128,7 @@ thead>th {
 }
 
 .game {
-    width: 320px;
+    width: 240px;
     align-self: baseline;
     border: 1px solid black;
     border-radius: 2px;
@@ -82,22 +139,96 @@ thead>th {
 }
 
 .listGames {
+    width: 50%;
     display: flex;
-    width: 700px;
+    margin-left: 25%;
+    margin-right: 25%;
+    /* width: 700px; */
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: rgb(55, 60, 70);
+    border: 1px solid rgb(204, 96, 24);
 }
 
 .titleGame {
-    background-color: darkgrey;
+    background-color: rgb(204, 96, 24);
     border-bottom: 1px solid black
+}
+
+.board.todo-item {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgb(55, 60, 70);
+    border: 1px solid rgb(204, 96, 24);
+    color: white;
+
 }
 
 .myRow {
     width: 100%;
+    padding: 1px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid darkgray;
 
+}
+
+.myRow .item1 {
+    width: 25%;
+    text-align: center;
+}
+
+.myRow .item2 {
+    width: 40%;
+    text-align: center;
+}
+
+.myRow .item3 {
+    width: 35%;
+    text-align: center;
+}
+
+.myRowJoin {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    border-bottom: 1px solid darkgray;
+}
+
+.myRowJoin .enemy {
+    width: 75%;
+    text-align: center;
+}
+
+
+
+.myRowJoin .join {
+    width: 25%;
+    text-align: center;
+
+}
+
+.navbar .btn {
+    padding: 3px 8px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    box-shadow: 1px 3px 4px white;
+    align-self: center;
+}
+
+.myRow .btn,
+.myRowJoin .btn {
+    padding: 1px 2px;
+    text-align: center;
+    display: inline-block;
+    font-size: 10px;
+    box-shadow: 1px 2px 3px;
+    align-self: center;
+    background-color: darkgrey;
 }

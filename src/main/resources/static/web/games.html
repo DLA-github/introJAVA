@@ -32,14 +32,14 @@
                             Out</i></a>
                 </div>
                 <div>
-                    <button @click="newGame()">New Game</button>
+                    <button class="btn" @click="newGame()">New Game</button>
                 </div>
             </div>
         </div>
-        <div class="todo-item" v-if="player">
+        <div class="welcome todo-item" v-if="player">
             <h3>Welcome {{player.playerName}}</h3>
         </div>
-        <div>
+        <div class="navbar2 todo-item">
             <h2>List of Games</h2>
         </div>
         <div v-if="!(player)">
@@ -47,12 +47,13 @@
                 <div class="game" v-for="game in allGames">
                     <div class="titleGame">
                         <h4>Game {{game.id}}</h4>
-                        <p>-created at {{game.created}}-</p>
+                        <p>{{game.created}}</p>
                     </div>
                     <div class="gameData" v-if="game.gamePlayers.length>0">
                         <div class="myRow" v-for="gp in game.gamePlayers">
-                            <div class="item">GamePlayer: {{gp.id}}</div>
-                            <div class="item">Player:{{gp.player.user}}</div>
+                            <div class="item1">GP: {{gp.id}}</div>
+                            <div class="item2">{{gp.player.user}}</div>
+                            <div class="item3" v-if="gp.player.score">Score:{{gp.player.score}}</div>
                         </div>
                     </div>
 
@@ -62,7 +63,7 @@
         <div v-if="player">
             <div class="listGames">
                 <div>
-                    <div>
+                    <div class="games">
                         <h3>My Games</h3>
                     </div>
                     <!-- <div class="loader" v-if="allGames.length==0">
@@ -72,15 +73,16 @@
                             <div class="titleGame">
 
                                 <h4>Game {{games.id}}</h4>
-                                <p>-created at {{games.created}}-</p>
+                                <p>{{games.created}}</p>
                             </div>
                             <div class="gameData" v-if="games.gamePlayers.length>0">
                                 <div class="myRow" v-for="gp in games.gamePlayers">
-                                    <div class="item">GamePlayer: {{gp.id}}</div>
-                                    <div class="item">Player:{{gp.player.user}}</div>
-                                    <div class="item" v-if="gp.player.score">Score:{{gp.player.score}}</div>
-                                    <div class="item" v-else>
-                                        <button @click="rejoin(gp.id)"
+                                    <div class="item1">GP: {{gp.id}}</div>
+                                    <div class="item2">{{gp.player.user}}</div>
+                                    <div class="item3" v-if="gp.player.score||gp.player.score==0">
+                                        Score:{{gp.player.score}}</div>
+                                    <div class="item3" v-else>
+                                        <button class="btn" @click="rejoin(gp.id)"
                                             v-if="player.playerName==gp.player.user">ReJoin</button>
                                     </div>
                                 </div>
@@ -91,7 +93,7 @@
                 </div>
                 <div v-if="totalGames.length>0">
                     <div>
-                        <div>
+                        <div class="games">
                             <h3>Join Games</h3>
                         </div>
                         <div class="game" v-for="ga in totalGames">
@@ -100,10 +102,11 @@
                                     <h4>Game {{ga.gameID}}</h4>
                                 </div>
                                 <div class="gameData">
-                                    <div class="myRow">
-                                        <div class="item">Enemy: {{ga.Enemy}}</div>
-                                        <div class="item">
-                                            <button @click="join(ga.gameID)" v-if="ga.Players==1">Join</button>
+                                    <div class="myRowJoin">
+                                        <div class="enemy">Enemy: {{ga.Enemy}}</div>
+                                        <div class="join">
+                                            <button class="btn" @click="join(ga.gameID)"
+                                                v-if="ga.Players==1">Join</button>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +117,7 @@
             </div>
         </div>
 
-        <div class="todo-item">
+        <div class="board todo-item">
             <div>
                 <h2>LeaderBoard</h2>
             </div>

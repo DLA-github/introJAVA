@@ -83,6 +83,22 @@ var game = new Vue({
     },
 
     methods: {
+        logout() {
+
+            fetch("/api/logout", {
+                    method: 'POST',
+                })
+                .then(function (data) {
+                    console.log("OUT");
+
+                })
+                .catch(function (error) {
+                    console.log('Request failure: ', error);
+                });
+        },
+        back() {
+            window.location = "./games.html";
+        },
         getData() {
             console.log("getData");
             fetch(this.url).then((response) => {
