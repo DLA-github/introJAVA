@@ -39,7 +39,7 @@ var login = new Vue({
             return body.join("&");
         },
         back() {
-            window.location = "./games.html";
+            window.location = "/";
         }
 
 

@@ -62,7 +62,7 @@ var register = new Vue({
                 });
         },
         back() {
-            window.location = "./games.html";
+            window.location = "/";
         }
     }
 

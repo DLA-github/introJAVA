@@ -97,7 +97,7 @@ var game = new Vue({
                 });
         },
         back() {
-            window.location = "./games.html";
+            window.location = "/";
         },
         getData() {
             console.log("getData");
@@ -540,7 +540,7 @@ var game = new Vue({
             this.popup = false;
             setTimeout(function () {
                 console.log();
-                window.location = "./games.html";
+                window.location = "/";
             }, 1500);
         }
 

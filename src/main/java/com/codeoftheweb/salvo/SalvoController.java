@@ -563,7 +563,7 @@ public class SalvoController {
                         tlose++;
 
                     } else if (player.getScore(game) == 0.5) {
-                        ttide = ttide + 1;
+                        ttide++;
 
                     }
                     p.put("tides", ttide);
