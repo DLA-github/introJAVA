@@ -81,8 +81,8 @@ body {
     display: flex;
     border-bottom: 1px solid rgb(204, 96, 24);
     justify-content: center;
-    background-color: #575455;
-    color: white;
+    background-color: black;
+    color: rgb(204, 96, 24);
 }
 
 .log h3 {
