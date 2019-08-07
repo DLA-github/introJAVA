@@ -104,7 +104,7 @@ p {
 tr>td,
 thead>th {
     text-align: center;
-    margin: 15px;
+    margin: 5px;
     border: 1px solid black;
     color: white;
 }
