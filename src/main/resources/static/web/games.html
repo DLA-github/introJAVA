@@ -124,21 +124,31 @@
             <div class="table">
                 <table>
                     <thead>
-                        <th>Player</th>
-                        <th>Total Games</th>
+                        <th class="name">Player</th>
+                        <th>Games</th>
                         <th>Points</th>
-                        <th>T.Wins</th>
-                        <th>T.Tide</th>
-                        <th>T.Lose</th>
+                        <th>Wins</th>
+                        <th>Tides</th>
+                        <th>Loses</th>
                     </thead>
-                    <tbody>
+                    <tbody v-if="allPlayers">
                         <tr v-for="player in allPlayers">
-                            <td>{{player.player}}</td>
-                            <td>{{player.totalGames}}</td>
-                            <td>{{player.totalPoints}}</td>
-                            <td>{{player.wins}}</td>
-                            <td>{{player.tides}}</td>
-                            <td>{{player.loses}}</td>
+                            <td class="name">{{player.player}}</td>
+
+                            <td v-if=(!player.totalGames)>0</td>
+                            <td v-else>{{player.totalGames}}</td>
+
+                            <td v-if=(!player.totalPoints)>0</td>
+                            <td v-else>{{player.totalPoints}}</td>
+
+                            <td v-if=(!player.wins)>0</td>
+                            <td v-else>{{player.wins}}</td>
+
+                            <td v-if=(!player.tides)>0</td>
+                            <td v-else>{{player.tides}}</td>
+
+                            <td v-if=(!player.loses)>0</td>
+                            <td v-else>{{player.loses}}</td>
                         </tr>
                     </tbody>
                 </table>

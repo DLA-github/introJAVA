@@ -1,236 +1,248 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-image: url(./img/46803hd.jpg);
-    background-position-x: 0;
-    background-position-y: 0;
+  background-image: url(./img/46803hd.jpg);
+  background-position-x: 0;
+  background-position-y: 0;
 }
-
 
 h2,
 h4,
 p {
-    text-align: center;
+  text-align: center;
 }
 
 .title h2 {
-    color: rgb(204, 96, 24);
+  color: rgb(204, 96, 24);
 }
 
 .table {
-    display: flex;
-    justify-content: center;
-    max-height: 50%;
-
+  display: flex;
+  justify-content: center;
+  max-height: 50%;
 }
 
 .navbar.todo-item {
-    width: 100%;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    border: 1px solid rgb(204, 96, 24);
-    margin-bottom: 20px;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  border: 1px solid rgb(204, 96, 24);
+  margin-bottom: 20px;
 }
 
 .navbar2.todo-item {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(55, 60, 70);
-    border: 1px solid rgb(204, 96, 24);
-    color: white;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(55, 60, 70);
+  border: 1px solid rgb(204, 96, 24);
+  color: white;
 }
 
 .navbar .title {
-    width: 50%;
-    display: flex;
-    align-self: center;
-    justify-content: flex-end;
-
+  width: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
 }
 
 .games h3 {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .welcome.todo-item {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    height: 40px;
-    background-color: rgb(66, 99, 112);
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-    color: white;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 40px;
+  background-color: rgb(66, 99, 112);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  color: white;
 }
 
-.welcome.todo-item>* {
-    align-self: center;
+.welcome.todo-item > * {
+  align-self: center;
 }
 
-.navbar>.icons {
-    width: 50%;
-    display: flex;
-    align-self: center;
-    justify-content: flex-end;
-
+.navbar > .icons {
+  width: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
 }
 
-.navbar>.icons>div>a {
-    color: white;
-    text-decoration: none;
+.navbar > .icons > div > a {
+  color: white;
+  text-decoration: none;
 }
 
-.title>div {
-    align-self: baseline;
-    margin: 15px;
+.title > div {
+  align-self: baseline;
+  margin: 15px;
 }
 
-.icons>div {
-    align-self: center;
-    margin: 20px;
+.icons > div {
+  align-self: center;
+  margin: 20px;
 }
 
-tr>td,
-thead>th {
-    text-align: center;
-    margin: 5px;
-    border: 1px solid black;
-    color: white;
+tr > td,
+thead > th {
+  text-align: center;
+  margin: 5px;
+  border: 1px solid black;
+  color: white;
 }
 
 .table th {
-    color: white;
+  color: white;
+  /* margin: 5px; */
 }
 
 .join {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .todo-item {
-    align-self: baseline;
-    border: 1px solid black;
-    border-radius: 2px;
-    margin-bottom: 3px;
-    background-color: white;
-    box-shadow: 1px 2px 2px black;
-    font-size: 14px;
+  align-self: baseline;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  background-color: white;
+  box-shadow: 1px 2px 2px black;
+  font-size: 14px;
 }
 
 .game {
-    width: 45%;
-    align-self: baseline;
-    border: 1px solid black;
-    border-radius: 2px;
-    margin-bottom: 10px;
-    background-color: white;
-    box-shadow: 1px 2px 2px black;
-    font-size: 14px;
+  align-self: baseline;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  background-color: white;
+  box-shadow: 1px 2px 2px black;
+  font-size: 14px;
 }
 
 .listGames {
-    width: 50%;
-    max-height: 60%;
-    display: flex;
-    margin-left: 25%;
-    margin-right: 25%;
-    /* width: 700px; */
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: rgb(55, 60, 70);
-    border: 1px solid rgb(204, 96, 24);
+  width: 50%;
+  max-height: 60%;
+  display: flex;
+  margin-left: 25%;
+  margin-right: 25%;
+  /* width: 700px; */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgb(55, 60, 70);
+  border: 1px solid rgb(204, 96, 24);
 }
 
 .titleGame {
-    background-color: rgb(204, 96, 24);
-    border-bottom: 1px solid black
+  background-color: rgb(204, 96, 24);
+  border-bottom: 1px solid black;
 }
 
 .board.todo-item {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    background-color: rgb(55, 60, 70);
-    border: 1px solid rgb(204, 96, 24);
-    color: white;
-
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: rgb(55, 60, 70);
+  border: 1px solid rgb(204, 96, 24);
+  color: white;
 }
 
 .myRow {
-    width: 100%;
-    padding: 1px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border-bottom: 1px solid darkgray;
-
+  width: 100%;
+  padding: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-bottom: 1px solid darkgray;
+  font-size: 11px;
 }
 
 .myRow .item1 {
-    width: 25%;
-    text-align: center;
+  width: 25%;
+  text-align: center;
 }
 
 .myRow .item2 {
-    width: 40%;
-    text-align: center;
+  width: 40%;
+  text-align: center;
 }
 
 .myRow .item3 {
-    width: 35%;
-    text-align: center;
+  width: 35%;
+  text-align: center;
 }
 
 .myRowJoin {
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    border-bottom: 1px solid darkgray;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  border-bottom: 1px solid darkgray;
+  font-size: 11px;
 }
 
 .myRowJoin .enemy {
-    width: 75%;
-    text-align: center;
+  width: 75%;
+  text-align: center;
 }
 
-
-
 .myRowJoin .join {
-    width: 25%;
-    text-align: center;
-
+  width: 25%;
+  text-align: center;
 }
 
 .navbar .btn {
-    padding: 3px 8px;
-    text-align: center;
-    display: inline-block;
-    font-size: 12px;
-    box-shadow: 1px 3px 4px white;
-    align-self: center;
+  padding: 3px 8px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  box-shadow: 1px 3px 4px white;
+  align-self: center;
 }
 
 .myRow .btn,
 .myRowJoin .btn {
-    padding: 1px 2px;
-    text-align: center;
-    display: inline-block;
-    font-size: 10px;
-    box-shadow: 1px 2px 3px;
-    align-self: center;
-    background-color: darkgrey;
+  padding: 1px 2px;
+  text-align: center;
+  display: inline-block;
+  font-size: 10px;
+  box-shadow: 1px 2px 3px;
+  align-self: center;
+  background-color: darkgrey;
+}
+
+@media only screen and (max-width: 700px) {
+  table {
+    width: 300px;
+    font-size: 11px;
+  }
+
+  tbody tr,
+  thead tr {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .name {
+    width: 120px;
+  }
 }
