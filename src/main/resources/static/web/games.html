@@ -52,7 +52,7 @@
                     <div class="gameData" v-if="game.gamePlayers.length>0">
                         <div class="myRow" v-for="gp in game.gamePlayers">
                             <div class="item1">GP: {{gp.id}}</div>
-                            <div class="item2">{{gp.player.user}}</div>
+                            <div class="item2">{{gp.player.user.split('@').shift()}}</div>
                             <div class="item3" v-if="gp.player.score">Score:{{gp.player.score}}</div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <div class="gameData" v-if="games.gamePlayers.length>0">
                                 <div class="myRow" v-for="gp in games.gamePlayers">
                                     <div class="item1">GP: {{gp.id}}</div>
-                                    <div class="item2">{{gp.player.user}}</div>
+                                    <div class="item2">{{gp.player.user.split('@').shift()}}</div>
                                     <div class="item3" v-if="gp.player.score||gp.player.score==0">
                                         Score:{{gp.player.score}}</div>
                                     <div class="item3" v-else>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="gameData">
                                     <div class="myRowJoin">
-                                        <div class="enemy">Enemy: {{ga.Enemy}}</div>
+                                        <div class="enemy">Enemy: {{ga.Enemy.split('@').shift()}}</div>
                                         <div class="join">
                                             <button class="btn" @click="join(ga.gameID)"
                                                 v-if="ga.Players==1">Join</button>
@@ -133,7 +133,7 @@
                     </thead>
                     <tbody v-if="allPlayers">
                         <tr v-for="player in allPlayers">
-                            <td class="name">{{player.player}}</td>
+                            <td class="name">{{player.player.split('@').shift()}}</td>
 
                             <td v-if=(!player.totalGames)>0</td>
                             <td v-else>{{player.totalGames}}</td>

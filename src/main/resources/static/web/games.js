@@ -82,10 +82,10 @@ var games = new Vue({
                     method: 'POST',
                 })
                 .then(function (data) {
-                    console.log(data);
+
                     return data.json()
                 }).then((data) => {
-                    console.log(data);
+
                     window.location = ("./game.html?gp=" + data.gpid);
                 })
                 .catch(function (error) {
@@ -106,7 +106,7 @@ var games = new Vue({
                 }).then((data) => {
 
                     if (data.gpid) {
-                        window.location = "./game.html?gp=" + data.gpid;
+                        window.location = "./web/game.html?gp=" + data.gpid;
                     }
                 })
                 .catch(function (error) {
@@ -114,7 +114,7 @@ var games = new Vue({
                 });
         },
         rejoin(payload) {
-            window.location = "./game.html?gp=" + payload;
+            window.location = "./web/game.html?gp=" + payload;
         }
 
     }

@@ -9,6 +9,11 @@ var stompClient = null;
 var turn = 1;
 
 
+var x = window.document.body.clientWidth;
+
+window.onresize = function () {
+    x = window.document.body.clientWidth;
+}
 
 function resize() {
     // console.log(game.ships.length);
@@ -318,8 +323,12 @@ var game = new Vue({
             if (this.send) {
                 let tShip = document.querySelectorAll("#ships");
                 tShip.forEach(a => {
-                    a.style.transform = "scale(.60)"
+                    a.style.transform = "scale(.55)"
                 });
+
+                if (x <= 700) {
+                    document.getElementById("ships").style.display = "none";
+                }
             }
 
 

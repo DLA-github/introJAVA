@@ -269,7 +269,7 @@ h2 {
 
 .todo-item.waiting {
   align-self: center;
-  margin-right: 25px;
+  margin-right: 35px;
   display: flex;
   align-self: center;
   justify-content: center;
@@ -361,8 +361,8 @@ h2 {
 }
 
 .grid2 {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   display: grid;
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
@@ -557,7 +557,7 @@ thead>th {
 
 
 
-@media only screen and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (max-width: 700px) and (orientation: portrait) {
   .grid1 {
     position: relative;
     width: 400px;
@@ -568,30 +568,31 @@ thead>th {
   }
 
   .grid2 {
-    width: 400px;
-    height: 400px;
+    /* width: 400px;
+    height: 400px; */
     display: grid;
     grid-template-columns: repeat(10, 10%);
     grid-template-rows: repeat(10, 10%);
   }
 
   #ships {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(204, 96, 24);
     border-radius: 2px;
     padding: 8px 4px;
     margin-bottom: 3px;
-    background-color: #fff;
-    box-shadow: 1px 2px 2px #ccc;
+    background-color: rgb(52, 56, 65);
+    box-shadow: 1px 2px 3px 1px rgb(0, 0, 0);
     font-size: 6px;
   }
 
+
   #salvo {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(204, 96, 24);
     border-radius: 2px;
     padding: 8px 4px;
     margin-bottom: 3px;
-    background-color: #fff;
-    box-shadow: 1px 2px 2px #ccc;
+    background-color: rgb(52, 56, 65);
+    box-shadow: -1px 2px 3px 1px rgb(0, 0, 0);
     font-size: 6px;
   }
 

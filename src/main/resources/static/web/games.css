@@ -107,7 +107,7 @@ thead > th {
 
 .table th {
   color: white;
-  /* margin: 5px; */
+  margin: 5px;
 }
 
 .join {
@@ -234,15 +234,18 @@ thead > th {
     font-size: 11px;
   }
 
-  tbody tr,
-  thead tr {
+  tbody tr {
     width: 300px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
-
+  thead tr {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+  }
   .name {
-    width: 120px;
+    width: 75px;
   }
 }
